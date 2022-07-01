@@ -1,0 +1,5 @@
+require 'pry'
+require './entities/book.rb'
+require './entities/author.rb'
+require './entities/order.rb'
+require './entities/reader.rb'
