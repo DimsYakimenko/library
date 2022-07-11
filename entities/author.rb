@@ -12,7 +12,7 @@ class Author
   private
 
   def validate
-    validate_string(@name, 'name')
-    validate_biography(@biography, 'biography')
+    validate_string!(@name, 'name')
+    validate_string!(@biography, 'biography')
   end
 end
