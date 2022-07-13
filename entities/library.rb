@@ -4,34 +4,29 @@ class Library
   attr_reader :author, :book, :reader, :order
 
   def initialize
-    @author = []
-    @book = []
-    @reader = []
-    @order = []
+    @authors = []
+    @books = []
+    @readers = []
+    @orders = []
   end
 
   def add(object)
     case object
-    when author
+    when Author
       @author << object
-    when book
+    when Book
       @book << object
-    when reader
+    when Reader
       @reader << object
-    when order
+    when Order
       @order << object
     end
   end
 
   def save
-    if @author.size > 0
-      save_to_yaml(@author)
-    elsif @book.size > 0
-      save_to_yaml(@book)
-    elsif @reader.size > 0
-      save_to_yaml(@reader)
-    elsif @order.size > 0
-      save_to_yaml(@order)
-    end
+    save_to_yaml(@author)
+    save_to_yaml(@book)
+    save_to_yaml(@reader)
+    save_to_yaml(@order)
   end
 end

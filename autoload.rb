@@ -1,6 +1,6 @@
+require 'date'
 require 'pry'
 require 'yaml'
-require 'date'
 require './modules/validation.rb'
 require './modules/storage.rb'
 require './entities/book.rb'

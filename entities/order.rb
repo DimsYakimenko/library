@@ -6,7 +6,7 @@ class Order
   def initialize(book, reader, date)
     @book = book
     @reader = reader
-    @date = date#Date.parse(date)
+    @date = Date.parse(date)
     validate
   end
 
@@ -14,6 +14,6 @@ class Order
 
   def validate
     validate_class!(@book, Book, 'book')
-    validate_class!(@reader, Reader, 'author')
+    validate_class!(@reader, Reader, 'reader')
   end
 end
