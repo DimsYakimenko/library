@@ -1,32 +1,34 @@
 class Library
   include Storage
 
-  attr_reader :author, :book, :reader, :order
+  require './autoload'
+
+  attr_reader :authors, :books, :readers, :orders
 
   def initialize
-    @authors = []
-    @books = []
-    @readers = []
-    @orders = []
+    @authors = YAML.load_file(("./data/authors.yml"), permitted_classes: [Author])
+    @books = YAML.load_file(("./data/books.yml"), permitted_classes: [Book, Author])
+    @readers = YAML.load_file(("./data/readers.yml"), permitted_classes: [Reader])
+    @orders = YAML.load_file(("./data/orders.yml"), permitted_classes: [Book, Author, Order, Reader, Date])
   end
 
-  def add(object)
-    case object
-    when Author
-      @author << object
-    when Book
-      @book << object
-    when Reader
-      @reader << object
-    when Order
-      @order << object
-    end
-  end
+  # def add(object)
+  #   case object
+  #   when Author
+  #     @authors << object
+  #   when Book
+  #     @books << object
+  #   when Reader
+  #     @readers << object
+  #   when Order
+  #     @orders << object
+  #   end
+  # end
 
   def save
-    save_to_yaml(@author)
-    save_to_yaml(@book)
-    save_to_yaml(@reader)
-    save_to_yaml(@order)
+    save_to_yaml(@authors)
+    save_to_yaml(@books)
+    save_to_yaml(@readers)
+    save_to_yaml(@orders)
   end
 end
