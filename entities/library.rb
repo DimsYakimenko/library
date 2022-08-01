@@ -41,7 +41,7 @@ class Library
   end
 
   def number_of_readers_of_the_most_popular_books(amount = 3)
-    orders.uniq { |order| order.reader.email }.group_by { |order| order.book.title }.transform_values {
-      |value| value.size }.sort_by { |key, value| value }.reverse.to_h.values
+    mpb = most_popular_books(amount = 1)
+    orders.select { |o| mpb.include?(o.book.title) }.map { |order| order.reader.email }.uniq.count
   end
 end
